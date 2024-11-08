@@ -1,0 +1,53 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+#dashboard {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+#histogram, #barchart, #piechart {
+    width: 40%;
+    min-width: 300px;
+}
+
+#dashboard {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns of equal width */
+    grid-template-rows: repeat(2, 1fr);    /* 2 rows of equal height */
+    gap: 20px;                             /* Space between grid items */
+    width: 100%;
+    max-width: 800px;                      /* Set a maximum width for the grid if needed */
+    margin: 0 auto;                        /* Center the grid */
+}
+
+#dashboard > div {
+    border: 1px solid #ccc;                /* Optional: add border around each plot */
+    padding: 10px;                         /* Optional: add padding inside each plot */
+    background-color: #f9f9f9;             /* Optional: add background color */
+    display: flex;                         /* Use flexbox to center content */
+    justify-content: center;               /* Center horizontally */
+    align-items: center;                   /* Center vertically */
+    overflow: hidden;                      /* Ensure contents do not overflow */
+    aspect-ratio: 1 / 1;
+}
+
+#piechart, #piechart2, #histogram, #barchart {
+    width: 100%;
+    max-width: 300px; /* Ensure maximum width consistency */
+    height: auto; /* Maintain aspect ratio */
+    margin: auto; /* Center the elements if needed */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Media query for smaller screens (e.g., mobile devices) */
+@media (max-width: 600px) {
+    #dashboard {
+        grid-template-columns: 1fr; /* Change to 1 column */
+        grid-template-rows: auto; /* Adjust rows automatically */
+    }
+}

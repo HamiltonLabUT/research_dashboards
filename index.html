@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Epilepsy Research Dashboard</title>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Who has participated?</h1>
+    <p> We are grateful to all of our patients and their families for participating in this study. Here is the current status of participants we have recruited from Dell Children's Medical Center and Texas Children's Hospital:</p>
+    <div id="tooltip" style="position: absolute; display: none; padding: 5px; background: #ffffff; border: 1px solid #ccc; border-radius: 3px; pointer-events: none;"></div>
+    <div id="eth_tooltip" style="position: absolute; display: none; padding: 5px; background: #ffffff; border: 1px solid #ccc; border-radius: 3px; pointer-events: none;"></div>        
+    <div id="dashboard">
+        <div id="histogram"></div>
+        <div id="barchart"></div>
+        <div id="piechart"></div>
+        <div id="piechart2"></div>
+    </div>
+    <script src="dashboard.js"></script>
+</body>
+</html>
