@@ -71,7 +71,7 @@ function createHistogram(data) {
     // Add x-axis label
     svg.append("text")
         .attr("x", width / 2) // Center the label horizontally
-        .attr("y", height - margin.bottom + 30) // Position it below the axis (adjust 30 as needed)
+        .attr("y", height - margin.bottom + 35) // Position it below the axis (adjust 30 as needed)
         .attr("text-anchor", "middle") // Center the text
         .attr("font-size", "14px")
         .text("Age");
