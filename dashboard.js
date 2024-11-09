@@ -66,6 +66,7 @@ function createHistogram(data) {
     svg.append("g")
         .attr("transform", `translate(0,${height - margin.bottom})`)
         .call(d3.axisBottom(x).ticks((x.domain()[1] - x.domain()[0]) / 2)) // Adjust ticks for 2-year intervals
+        .style("font-size", "14px"); 
 
     // Add x-axis label
     svg.append("text")
@@ -79,6 +80,7 @@ function createHistogram(data) {
     svg.append("g")
         .attr("transform", `translate(${margin.left},0)`)
         .call(d3.axisLeft(y).ticks(5));
+        .style("font-size", "14px"); 
     
     // Add y-axis label
     svg.append("text")
@@ -144,10 +146,12 @@ function createBarChart(data) {
     svg.append("g")
         .attr("transform", `translate(0,${height - margin.bottom})`)
         .call(d3.axisBottom(x));
+        .style("font-size", "14px"); 
 
     svg.append("g")
         .attr("transform", `translate(${margin.left},0)`)
         .call(d3.axisLeft(y));
+        .style("font-size", "14px"); 
 }
 
 
@@ -301,6 +305,7 @@ function createRaceEthnicityChart(data) {
     svg.append("g")
         .attr("transform", `translate(0,${height - margin.bottom})`)
         .call(d3.axisBottom(x0))
+        .style("font-size", "14px"); 
         .selectAll("text")
         .attr("transform", "rotate(-45)")
         .style("text-anchor", "end");
@@ -308,6 +313,7 @@ function createRaceEthnicityChart(data) {
     svg.append("g")
         .attr("transform", `translate(${margin.left},0)`)
         .call(d3.axisLeft(y));
+        .style("font-size", "14px"); 
 
     // Bars
     const barGroups = svg.selectAll(".bar-group")
