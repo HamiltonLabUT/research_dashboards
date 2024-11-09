@@ -152,6 +152,15 @@ function createBarChart(data) {
         .attr("transform", `translate(${margin.left},0)`)
         .call(d3.axisLeft(y))
         .style("font-size", "14px"); 
+
+    // Add y-axis label
+    svg.append("text")
+        .attr("x", -height / 2) // Center vertically relative to the height
+        .attr("y", margin.left - 30) // Position it relative to the left margin (adjust -40 as needed)
+        .attr("text-anchor", "middle") // Center the text relative to its x and y coordinates
+        .attr("transform", "rotate(-90)") // Rotate text to be vertical
+        .attr("font-size", "14px")
+        .text("Number of participants");
 }
 
 
