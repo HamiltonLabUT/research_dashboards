@@ -16,7 +16,19 @@
         <div id="piechart"></div>
         <div id="piechart2"></div>
     </div>
-    <p>This dashboard is maintained by the Hamilton Lab at the University of Texas at Austin.</p>
+    <p>This dashboard is maintained by the Hamilton Lab at the University of Texas at Austin. </p>
+    <div id="last-modified-date"></div>
     <script src="dashboard.js"></script>
+    <script>
+  // Get the last modified date of the current document
+  const lastModified = new Date(document.lastModified);
+
+  // Format the date to 'Month Day, Year'
+  const options = { month: 'long', day: 'numeric', year: 'numeric' };
+  const formattedDate = lastModified.toLocaleDateString('en-US', options);
+
+  // Insert the formatted date into the HTML element
+  document.getElementById('last-modified-date').textContent = `Last Modified: ${formattedDate}`;
+</script>
 </body>
 </html>
