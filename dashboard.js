@@ -80,7 +80,6 @@ function createHistogram(data) {
     svg.append("g")
         .attr("transform", `translate(${margin.left},0)`)
         .call(d3.axisLeft(y).ticks(5));
-        .style("font-size", "14px"); 
     
     // Add y-axis label
     svg.append("text")
