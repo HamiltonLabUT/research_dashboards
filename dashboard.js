@@ -19,18 +19,11 @@ function createHistogram(data) {
     const width = 400, height = 300, margin = {top: 20, right: 30, bottom: 40, left: 40};
     const svg = d3.select("#histogram")
         .append("svg")
-        //.attr("width", width)
-        //.attr("height", height);
-        .attr("viewBox", `0 0 400 300`) // Maintain a fixed aspect ratio
+        .attr("viewBox", `0 0 ${width} ${height}`) // Maintain a fixed aspect ratio
         .attr("preserveAspectRatio", "xMidYMid meet") // Ensure the SVG scales within the container
         .style("width", "100%") // Make SVG responsive to container width
         .style("height", "auto"); // Maintain aspect ratio
 
-    const x = d3.scaleLinear()
-        .domain(d3.extent(data, d => d.Age))
-        .nice() // Extend domain to nice round values
-        .range([margin.left, width - margin.right]);
-        
     // Compute 2-year bins
     const ageExtent = d3.extent(data, d => d.Age);
     const x = d3.scaleLinear()
@@ -45,7 +38,7 @@ function createHistogram(data) {
 
     const y = d3.scaleLinear()
         .domain([0, d3.max(bins, d => d.length)])
-        .nice() // Extend domain to nice round values
+        .nice()
         .range([height - margin.bottom, margin.top]);
 
     // Color scale for the bars
@@ -69,9 +62,10 @@ function createHistogram(data) {
         .attr("y", d => y(d.length) - (height - margin.bottom)) // Correct y position
         .attr("height", d => height - margin.bottom - y(d.length));
 
+    // X-axis
     svg.append("g")
         .attr("transform", `translate(0,${height - margin.bottom})`)
-        .call(d3.axisBottom(x));
+        .call(d3.axisBottom(x).ticks((x.domain()[1] - x.domain()[0]) / 2)) // Adjust ticks for 2-year intervals
 
     // Add x-axis label
     svg.append("text")
@@ -81,6 +75,7 @@ function createHistogram(data) {
         .attr("font-size", "14px")
         .text("Age");
 
+    // Y-axis
     svg.append("g")
         .attr("transform", `translate(${margin.left},0)`)
         .call(d3.axisLeft(y).ticks(5));
@@ -93,8 +88,8 @@ function createHistogram(data) {
         .attr("transform", "rotate(-90)") // Rotate text to be vertical
         .attr("font-size", "14px")
         .text("Number of participants");
-
 }
+
 
 
 function createBarChart(data) {
