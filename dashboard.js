@@ -1,4 +1,4 @@
-d3.csv('subject_info.csv').then(data => {
+d3.csv('subject_info2.csv').then(data => {
     // Parse data as needed
     data.forEach(d => {
         console.log(d.Age);
