@@ -30,11 +30,18 @@ function createHistogram(data) {
         .domain(d3.extent(data, d => d.Age))
         .nice() // Extend domain to nice round values
         .range([margin.left, width - margin.right]);
+        
+    // Compute 2-year bins
+    const ageExtent = d3.extent(data, d => d.Age);
+    const x = d3.scaleLinear()
+        .domain([Math.floor(ageExtent[0] / 2) * 2, Math.ceil(ageExtent[1] / 2) * 2]) // Ensure domain aligns with 2-year bins
+        .nice()
+        .range([margin.left, width - margin.right]);
 
     const bins = d3.histogram()
         .value(d => d.Age)
         .domain(x.domain())
-        .thresholds(x.ticks(5))(data);
+        .thresholds(d3.range(x.domain()[0], x.domain()[1] + 2, 2))(data); // Create 2-year bins
 
     const y = d3.scaleLinear()
         .domain([0, d3.max(bins, d => d.length)])
