@@ -1,16 +1,21 @@
 d3.csv('https://raw.githubusercontent.com/HamiltonLabUT/research_dashboards/refs/heads/main/subject_info.csv').then(data => {
     // Parse data as needed
     data.forEach(d => {
+        console.log(d.Age);
         d.Age = +d.Age; // Convert age to a number
     });
-
+    console.log("Adding histogram");
     createHistogram(data);
+    console.log("Adding bar chart");
     createBarChart(data);
+    console.log("Adding pie chart");
     createPieChart(data);
+    console.log("Adding second pie chart");
     createEthnicityPieChart(data);
 });
 
 function createHistogram(data) {
+    console.log("In the createHistogram function");
     const width = 400, height = 300, margin = {top: 20, right: 30, bottom: 40, left: 40};
     const svg = d3.select("#histogram")
         .append("svg")
