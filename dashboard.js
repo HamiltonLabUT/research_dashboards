@@ -1,4 +1,4 @@
-d3.csv('https://raw.githubusercontent.com/HamiltonLabUT/research_dashboards/refs/heads/main/subject_info.csv').then(data => {
+d3.csv('subject_info.csv').then(data => {
     // Parse data as needed
     data.forEach(d => {
         console.log(d.Age);
@@ -214,9 +214,6 @@ function createEthnicityPieChart(data) {
     const pieColors = ["#78D5D7", "#FFA69E", "#D4E157", "#C3A6FF", "#FFC5A1"];
     const color = d3.scaleOrdinal().range(pieColors);
 
-    // Create a tooltip
-    const tooltip = d3.select("#eth_tooltip");
-
     // Define an arc generator for the initial state (start angle = end angle)
     const arcTween = function(d) {
         const i = d3.interpolate({startAngle: 0, endAngle: 0}, d);
@@ -242,17 +239,6 @@ function createEthnicityPieChart(data) {
     svg.selectAll("text")
         .data(pie)
         .join("text")
-        .on("mouseover", (event, d) => {
-            tooltip.style("display", "block")
-                .html(`<strong>${d[0]}</strong>: ${d[1]} participants`);
-        })
-        .on("mousemove", event => {
-            tooltip.style("left", (event.pageX + 10) + "px")
-                .style("top", (event.pageY - 20) + "px");
-        })
-        .on("mouseout", () => {
-            tooltip.style("display", "none");
-        })
         .transition()
         .delay(1000) // Delay labels until slices are fully grown
         .attr("transform", d => `translate(${labelArc.centroid(d)})`)
