@@ -1,4 +1,4 @@
-d3.csv('ParticipantLevelData-2024_cumulative_subjIDs.csv').then(data => {
+d3.csv('https://raw.githubusercontent.com/HamiltonLabUT/research_dashboards/refs/heads/main/subject_info.csv').then(data => {
     // Parse data as needed
     data.forEach(d => {
         d.Age = +d.Age; // Convert age to a number
